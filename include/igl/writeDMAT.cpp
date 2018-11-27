@@ -90,4 +90,5 @@ template bool igl::writeDMAT<Eigen::Matrix<float, 1, 3, 1, 1, 3> >(std::string, 
 template bool igl::writeDMAT<Eigen::Matrix<int, -1, -1, 0, -1, -1> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> >, Eigen::MatrixBase<Eigen::Matrix<int, -1, -1, 0, -1, -1> > const&, bool);
 template bool igl::writeDMAT<Eigen::Matrix<int, -1, 2, 0, -1, 2> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> >, Eigen::MatrixBase<Eigen::Matrix<int, -1, 2, 0, -1, 2> > const&, bool);
 template bool igl::writeDMAT<Eigen::Matrix<double, -1, 1, 0, -1, 1> >(std::basic_string<char, std::char_traits<char>, std::allocator<char> >, Eigen::MatrixBase<Eigen::Matrix<double, -1, 1, 0, -1, 1> > const&, bool);
+template bool igl::writeDMAT<Eigen::Matrix<int, -1, 1, 0, -1, 1> >(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, Eigen::MatrixBase<Eigen::Matrix<int, -1, 1, 0, -1, 1> > const&, bool);
 #endif
