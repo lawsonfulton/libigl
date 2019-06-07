@@ -42,7 +42,7 @@ def solve(viewer):
 
     C = igl.eigen.MatrixXd()
     igl.jet(Z, 0, 1, C)
-    viewer.data().set_colors(C)
+    viewer.data(0).set_colors(C)
 
 
 def key_down(viewer, key, mod):
@@ -68,8 +68,8 @@ igl.readOFF(TUTORIAL_SHARED_PATH + "cheburashka.off", V, F)
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
-viewer.data().show_lines = False
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).show_lines = False
 viewer.callback_key_down = key_down
 
 # One fixed point on belly

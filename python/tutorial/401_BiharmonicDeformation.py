@@ -49,8 +49,8 @@ def pre_draw(viewer):
     else:
         igl.harmonic(V, F, b, U_bc_anim, 2, U)
 
-    viewer.data().set_vertices(U)
-    viewer.data().compute_normals()
+    viewer.data(0).set_vertices(U)
+    viewer.data(0).compute_normals()
     return False
 
 
@@ -107,9 +107,9 @@ for f in range(0, F.rows()):
 
 # Plot the mesh with pseudocolors
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(U, F)
-viewer.data().show_lines = False
-viewer.data().set_colors(C)
+viewer.data(0).set_mesh(U, F)
+viewer.data(0).show_lines = False
+viewer.data(0).set_colors(C)
 # viewer.core.trackball_angle = igl.eigen.Quaterniond(sqrt(2.0),0,sqrt(2.0),0)
 # viewer.core.trackball_angle.normalize()
 

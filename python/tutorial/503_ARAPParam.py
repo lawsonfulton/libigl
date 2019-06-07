@@ -37,13 +37,13 @@ def key_down(viewer, key, modifier):
         V_uv = initial_guess
 
     if show_uv:
-        viewer.data().set_mesh(V_uv, F)
+        viewer.data(0).set_mesh(V_uv, F)
         viewer.core.align_camera_center(V_uv, F)
     else:
-        viewer.data().set_mesh(V, F)
+        viewer.data(0).set_mesh(V, F)
         viewer.core.align_camera_center(V, F)
 
-    viewer.data().compute_normals()
+    viewer.data(0).compute_normals()
     return False
 
 
@@ -80,15 +80,15 @@ V_uv *= 20
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
-viewer.data().set_uv(V_uv)
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).set_uv(V_uv)
 viewer.callback_key_down = key_down
 
 # Disable wireframe
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 
 # Draw checkerboard texture
-viewer.data().show_texture = True
+viewer.data(0).show_texture = True
 
 # Launch the viewer
 viewer.launch()

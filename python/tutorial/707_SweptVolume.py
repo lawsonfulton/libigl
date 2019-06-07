@@ -25,16 +25,16 @@ def key_down(viewer, key, modifier):
     global show_swept_volume, SV, SF, V, F
     if key == ord(' '):
         show_swept_volume = not show_swept_volume
-        viewer.data().clear()
+        viewer.data(0).clear()
 
         if show_swept_volume:
-            viewer.data().set_mesh(SV, SF)
-            viewer.data().uniform_colors(igl.eigen.MatrixXd([0.2, 0.2, 0.2]), igl.eigen.MatrixXd([1.0, 1.0, 1.0]), igl.eigen.MatrixXd([1.0, 1.0, 1.0])) # TODO replace with constants from cpp
+            viewer.data(0).set_mesh(SV, SF)
+            viewer.data(0).uniform_colors(igl.eigen.MatrixXd([0.2, 0.2, 0.2]), igl.eigen.MatrixXd([1.0, 1.0, 1.0]), igl.eigen.MatrixXd([1.0, 1.0, 1.0])) # TODO replace with constants from cpp
         else:
-            viewer.data().set_mesh(V, F)
+            viewer.data(0).set_mesh(V, F)
 
         viewer.core.is_animating = not show_swept_volume
-        viewer.data().set_face_based(True)
+        viewer.data(0).set_face_based(True)
 
     return True
 
@@ -48,8 +48,8 @@ def pre_draw(viewer):
         Vtrans = igl.eigen.MatrixXd(VT.rows(), VT.cols())
         Vtrans.rowwiseSet(trans)
         VT += Vtrans
-        viewer.data().set_vertices(VT)
-        viewer.data().compute_normals()
+        viewer.data(0).set_vertices(VT)
+        viewer.data(0).compute_normals()
     return False
 
 
@@ -84,8 +84,8 @@ if __name__ == "__main__":
 
     # Plot the generated mesh
     viewer = igl.glfw.Viewer()
-    viewer.data().set_mesh(V, F)
-    viewer.data().set_face_based(True)
+    viewer.data(0).set_mesh(V, F)
+    viewer.data(0).set_face_based(True)
     viewer.core.is_animating = not show_swept_volume
     viewer.callback_pre_draw = pre_draw
     viewer.callback_key_down = key_down

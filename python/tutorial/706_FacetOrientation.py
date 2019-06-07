@@ -28,9 +28,9 @@ def key_down(viewer, key, modifier):
     elif key == ord(' '):
         is_showing_reoriented = ~is_showing_reoriented
 
-    viewer.data().clear()
-    viewer.data().set_mesh(V, FF[facetwise] if is_showing_reoriented else F)
-    viewer.data().set_colors(RGBcolors[facetwise])
+    viewer.data(0).clear()
+    viewer.data(0).set_mesh(V, FF[facetwise] if is_showing_reoriented else F)
+    viewer.data(0).set_colors(RGBcolors[facetwise])
 
     return True
 
@@ -46,7 +46,7 @@ def scramble_colors():
         HSVright.setConstant(1.0)
         HSV.setRightCols(2, HSVright)
         igl.hsv_to_rgb(HSV, RGBcolors[p])
-    viewer.data().set_colors(RGBcolors[facetwise])
+    viewer.data(0).set_colors(RGBcolors[facetwise])
 
 
 
@@ -80,8 +80,8 @@ if __name__ == "__main__":
 
     # Plot the generated mesh
     viewer = igl.glfw.Viewer()
-    viewer.data().set_mesh(V, FF[facetwise] if is_showing_reoriented else F)
-    viewer.data().set_face_based(True)
+    viewer.data(0).set_mesh(V, FF[facetwise] if is_showing_reoriented else F)
+    viewer.data(0).set_face_based(True)
     scramble_colors()
     viewer.callback_key_down = key_down
     viewer.launch()

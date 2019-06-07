@@ -65,14 +65,14 @@ def key_down(viewer, key, mod):
         if twod:
             V.setcol(2, Z)
 
-        viewer.data().set_mesh(V, F)
-        viewer.data().compute_normals()
-        viewer.data().set_colors(C)
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).compute_normals()
+        viewer.data(0).set_colors(C)
         return True
     return False
 
 
 viewer.callback_key_down = key_down
 viewer.callback_key_down(viewer, ord(' '), 0)
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 viewer.launch()

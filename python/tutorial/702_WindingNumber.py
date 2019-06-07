@@ -48,10 +48,10 @@ def update(viewer):
     elif overlay == 2:  # OVERLAY_OUTPUT
         append_mesh(C_vis, F_vis, V_vis, V, F, igl.eigen.MatrixXd([[0.8, 0.8, 0.8]]))
 
-    viewer.data().clear()
-    viewer.data().set_mesh(V_vis, F_vis)
-    viewer.data().set_colors(C_vis)
-    viewer.data().set_face_based(True)
+    viewer.data(0).clear()
+    viewer.data(0).set_mesh(V_vis, F_vis)
+    viewer.data(0).set_colors(C_vis)
+    viewer.data(0).set_face_based(True)
 
 
 def key_down(viewer, key, modifier):

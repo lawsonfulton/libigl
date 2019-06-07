@@ -41,7 +41,7 @@ GU = (G * U).MapMatrix(F.rows(), 3)
 GU_mag = GU.rowwiseNorm()
 
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
+viewer.data(0).set_mesh(V, F)
 
 # Compute pseudocolor for original function
 C = igl.eigen.MatrixXd()
@@ -51,7 +51,7 @@ igl.jet(U, True, C)
 # Or for gradient magnitude
 # igl.jet(GU_mag,True,C)
 
-viewer.data().set_colors(C)
+viewer.data(0).set_colors(C)
 
 # Average edge length divided by average gradient (for scaling)
 max_size = igl.avg_edge_length(V, F) / GU_mag.mean()
@@ -61,9 +61,9 @@ BC = igl.eigen.MatrixXd()
 igl.barycenter(V, F, BC)
 
 black = igl.eigen.MatrixXd([[0.0, 0.0, 0.0]])
-viewer.data().add_edges(BC, BC + max_size * GU, black)
+viewer.data(0).add_edges(BC, BC + max_size * GU, black)
 
 # Hide wireframe
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 
 viewer.launch()

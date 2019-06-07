@@ -58,9 +58,9 @@ def key_down(viewer, key, modifier):
             F_temp.setRow(i * 4 + 2, igl.eigen.MatrixXd([[(i*4)+3, (i*4)+2, (i*4)+0]]).castint())
             F_temp.setRow(i * 4 + 3, igl.eigen.MatrixXd([[(i*4)+1, (i*4)+2, (i*4)+3]]).castint())
 
-        viewer.data().clear()
-        viewer.data().set_mesh(V_temp, F_temp)
-        viewer.data().set_face_based(True)
+        viewer.data(0).clear()
+        viewer.data(0).set_mesh(V_temp, F_temp)
+        viewer.data(0).set_face_based(True)
 
     else:
         return False

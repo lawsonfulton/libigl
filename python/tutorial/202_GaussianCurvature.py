@@ -34,6 +34,6 @@ igl.jet(K, True, C)
 
 # Plot the mesh with pseudocolors
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
-viewer.data().set_colors(C)
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).set_colors(C)
 viewer.launch()

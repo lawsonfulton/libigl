@@ -43,8 +43,8 @@ def pre_draw(viewer):
         resolve = False
 
     U.setCol(2, z_max * Z)
-    viewer.data().set_vertices(U)
-    viewer.data().compute_normals()
+    viewer.data(0).set_vertices(U)
+    viewer.data(0).compute_normals()
 
     if viewer.core.is_animating:
         z_max += z_dir
@@ -99,9 +99,9 @@ for f in range(0, F.rows()):
 
 # Plot the mesh with pseudocolors
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(U, F)
-viewer.data().show_lines = False
-viewer.data().set_colors(C)
+viewer.data(0).set_mesh(U, F)
+viewer.data(0).show_lines = False
+viewer.data(0).set_colors(C)
 viewer.core.trackball_angle = igl.eigen.Quaterniond(0.81,-0.58,-0.03,-0.03)
 viewer.core.trackball_angle.normalize()
 viewer.callback_pre_draw = pre_draw

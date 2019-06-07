@@ -31,7 +31,7 @@ def mouse_down(viewer, a, b):
     if hit:
         # paint hit red
         C.setRow(fid[0, 0], igl.eigen.MatrixXd([[1, 0, 0]]))
-        viewer.data().set_colors(C)
+        viewer.data(0).set_colors(C)
         return True
 
     return False
@@ -54,8 +54,8 @@ if __name__ == "__main__":
 
     # Show mesh
     viewer = igl.glfw.Viewer()
-    viewer.data().set_mesh(V, F)
-    viewer.data().set_colors(C)
-    viewer.data().show_lines = False
+    viewer.data(0).set_mesh(V, F)
+    viewer.data(0).set_colors(C)
+    viewer.data(0).show_lines = False
     viewer.callback_mouse_down = mouse_down
     viewer.launch()

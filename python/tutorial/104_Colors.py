@@ -28,7 +28,7 @@ igl.readOFF(TUTORIAL_SHARED_PATH + "screwdriver.off", V, F)
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
+viewer.data(0).set_mesh(V, F)
 
 # Use the z coordinate as a scalar field over the surface
 Z = V.col(2)
@@ -37,7 +37,7 @@ Z = V.col(2)
 igl.jet(Z, True, C)
 
 # Add per-vertex colors
-viewer.data().set_colors(C)
+viewer.data(0).set_colors(C)
 
 # Launch the viewer
 viewer.launch()

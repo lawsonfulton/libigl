@@ -27,13 +27,13 @@ V_uv = igl.eigen.MatrixXd()
 def key_down(viewer, key, modifier):
     if key == ord('1'):
         # Plot the 3D mesh
-        viewer.data().set_mesh(V, F)
+        viewer.data(0).set_mesh(V, F)
         viewer.core.align_camera_center(V, F)
     elif key == ord('2'):
         # Plot the mesh in 2D using the UV coordinates as vertex coordinates
-        viewer.data().set_mesh(V_uv, F)
+        viewer.data(0).set_mesh(V_uv, F)
         viewer.core.align_camera_center(V_uv, F)
-    viewer.data().compute_normals()
+    viewer.data(0).compute_normals()
     return False
 
 
@@ -57,15 +57,15 @@ V_uv *= 5
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
-viewer.data().set_uv(V_uv)
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).set_uv(V_uv)
 viewer.callback_key_down = key_down
 
 # Disable wireframe
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 
 # Draw checkerboard texture
-viewer.data().show_texture = True
+viewer.data(0).show_texture = True
 
 # Launch the viewer
 viewer.launch()

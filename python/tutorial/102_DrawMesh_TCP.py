@@ -28,5 +28,5 @@ igl.readOFF(TUTORIAL_SHARED_PATH + "beetle.off", V, F)
 
 # Send it to the viewer
 viewer = tcpviewer.TCPViewer()
-viewer.data().set_mesh(V, F)
+viewer.data(0).set_mesh(V, F)
 viewer.launch()

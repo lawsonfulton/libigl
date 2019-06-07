@@ -68,7 +68,7 @@ def pre_draw(viewer):
         value = 1 - value
     value /= 0.5
     r, g, b = igl.parula(value)
-    viewer.data().add_edges(state.start_point, state.end_point, igl.eigen.MatrixXd([[r, g, b]]))
+    viewer.data(0).add_edges(state.start_point, state.end_point, igl.eigen.MatrixXd([[r, g, b]]))
 
     anim_t += anim_t_dir
 
@@ -103,7 +103,7 @@ def main():
 
     # Setup viewer
     viewer = igl.glfw.Viewer()
-    viewer.data().set_mesh(V, F)
+    viewer.data(0).set_mesh(V, F)
     viewer.callback_pre_draw = pre_draw
     viewer.callback_key_down = key_down
 
@@ -114,8 +114,8 @@ def main():
 
     # Paint mesh grayish
     C = igl.eigen.MatrixXd()
-    C.setConstant(viewer.data().V.rows(), 3, .9)
-    viewer.data().set_colors(C)
+    C.setConstant(viewer.data(0).V.rows(), 3, .9)
+    viewer.data(0).set_colors(C)
 
     # Draw vector field on sample points
     state0 = state.copy()
@@ -124,7 +124,7 @@ def main():
     v = state0.end_point - state0.start_point
     v = v.rowwiseNormalized()
 
-    viewer.data().add_edges(state0.start_point,
+    viewer.data(0).add_edges(state0.start_point,
                           state0.start_point + 0.059 * v,
                           igl.eigen.MatrixXd([[1.0, 1.0, 1.0]]))
 

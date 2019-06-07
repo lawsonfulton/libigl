@@ -57,8 +57,8 @@ def pre_draw(viewer):
             bc[i, 0] += r * sin(0.35 * anim_t * 2. * pi)
 
     igl.arap_solve(bc, arap_data, U)
-    viewer.data().set_vertices(U)
-    viewer.data().compute_normals()
+    viewer.data(0).set_vertices(U)
+    viewer.data(0).compute_normals()
 
     if viewer.core.is_animating:
         anim_t += anim_t_dir
@@ -101,8 +101,8 @@ for f in range(0, F.rows()):
 
 # Plot the mesh with pseudocolors
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(U, F)
-viewer.data().set_colors(C)
+viewer.data(0).set_mesh(U, F)
+viewer.data(0).set_colors(C)
 viewer.callback_pre_draw = pre_draw
 viewer.callback_key_down = key_down
 viewer.core.is_animating = True

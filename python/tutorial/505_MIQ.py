@@ -99,37 +99,37 @@ def key_down(viewer, key, modifier):
     if key < ord('1') or key > ord('8'):
         return False
 
-    viewer.data().clear()
-    viewer.data().show_lines = False
-    viewer.data().show_texture = False
+    viewer.data(0).clear()
+    viewer.data(0).show_lines = False
+    viewer.data(0).show_texture = False
 
     if key == ord('1'):
         # Cross field
-        viewer.data().set_mesh(V, F)
-        viewer.data().add_edges(B - global_scale * X1 if extend_arrows else B, B + global_scale * X1,
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).add_edges(B - global_scale * X1 if extend_arrows else B, B + global_scale * X1,
                               igl.eigen.MatrixXd([[1, 0, 0]]))
-        viewer.data().add_edges(B - global_scale * X2 if extend_arrows else B, B + global_scale * X2,
+        viewer.data(0).add_edges(B - global_scale * X2 if extend_arrows else B, B + global_scale * X2,
                               igl.eigen.MatrixXd([[0, 0, 1]]))
 
     if key == ord('2'):
         # Bisector field
-        viewer.data().set_mesh(V, F)
-        viewer.data().add_edges(B - global_scale * BIS1 if extend_arrows else B, B + global_scale * BIS1,
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).add_edges(B - global_scale * BIS1 if extend_arrows else B, B + global_scale * BIS1,
                               igl.eigen.MatrixXd([[1, 0, 0]]))
-        viewer.data().add_edges(B - global_scale * BIS2 if extend_arrows else B, B + global_scale * BIS2,
+        viewer.data(0).add_edges(B - global_scale * BIS2 if extend_arrows else B, B + global_scale * BIS2,
                               igl.eigen.MatrixXd([[0, 0, 1]]))
 
     if key == ord('3'):
         # Bisector field combed
-        viewer.data().set_mesh(V, F)
-        viewer.data().add_edges(B - global_scale * BIS1_combed if extend_arrows else B, B + global_scale * BIS1_combed,
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).add_edges(B - global_scale * BIS1_combed if extend_arrows else B, B + global_scale * BIS1_combed,
                               igl.eigen.MatrixXd([[1, 0, 0]]))
-        viewer.data().add_edges(B - global_scale * BIS2_combed if extend_arrows else B, B + global_scale * BIS2_combed,
+        viewer.data(0).add_edges(B - global_scale * BIS2_combed if extend_arrows else B, B + global_scale * BIS2_combed,
                               igl.eigen.MatrixXd([[0, 0, 1]]))
 
     if key == ord('4'):
         # Singularities and cuts
-        viewer.data().set_mesh(V, F)
+        viewer.data(0).set_mesh(V, F)
 
         # Plot cuts
         l_count = Seams.sum()
@@ -143,22 +143,22 @@ def key_down(viewer, key, modifier):
                     P2.setRow(l_count - 1, V.row(F[i, (j + 1) % 3]))
                     l_count -= 1
 
-        viewer.data().add_edges(P1, P2, igl.eigen.MatrixXd([[1, 0, 0]]))
+        viewer.data(0).add_edges(P1, P2, igl.eigen.MatrixXd([[1, 0, 0]]))
 
         # Plot the singularities as colored dots (red for negative, blue for positive)
         for i in range(0, singularityIndex.size()):
             if 2 > singularityIndex[i] > 0:
-                viewer.data().add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
+                viewer.data(0).add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
             elif singularityIndex[i] > 2:
-                viewer.data().add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
+                viewer.data(0).add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
 
     if key == ord('5'):
         # Singularities and cuts, original field
         # Singularities and cuts
-        viewer.data().set_mesh(V, F)
-        viewer.data().add_edges(B - global_scale * X1_combed if extend_arrows else B, B + global_scale * X1_combed,
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).add_edges(B - global_scale * X1_combed if extend_arrows else B, B + global_scale * X1_combed,
                               igl.eigen.MatrixXd([[1, 0, 0]]))
-        viewer.data().add_edges(B - global_scale * X2_combed if extend_arrows else B, B + global_scale * X2_combed,
+        viewer.data(0).add_edges(B - global_scale * X2_combed if extend_arrows else B, B + global_scale * X2_combed,
                               igl.eigen.MatrixXd([[0, 0, 1]]))
 
         # Plot cuts
@@ -174,38 +174,38 @@ def key_down(viewer, key, modifier):
                     P2.setRow(l_count - 1, V.row(F[i, (j + 1) % 3]))
                     l_count -= 1
 
-        viewer.data().add_edges(P1, P2, igl.eigen.MatrixXd([[1, 0, 0]]))
+        viewer.data(0).add_edges(P1, P2, igl.eigen.MatrixXd([[1, 0, 0]]))
 
         # Plot the singularities as colored dots (red for negative, blue for positive)
         for i in range(0, singularityIndex.size()):
             if 2 > singularityIndex[i] > 0:
-                viewer.data().add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
+                viewer.data(0).add_points(V.row(i), igl.eigen.MatrixXd([[1, 0, 0]]))
             elif singularityIndex[i] > 2:
-                viewer.data().add_points(V.row(i), igl.eigen.MatrixXd([[0, 1, 0]]))
+                viewer.data(0).add_points(V.row(i), igl.eigen.MatrixXd([[0, 1, 0]]))
 
     if key == ord('6'):
         # Global parametrization UV
-        viewer.data().set_mesh(UV, FUV)
-        viewer.data().set_uv(UV)
-        viewer.data().show_lines = True
+        viewer.data(0).set_mesh(UV, FUV)
+        viewer.data(0).set_uv(UV)
+        viewer.data(0).show_lines = True
 
     if key == ord('7'):
         # Global parametrization in 3D
-        viewer.data().set_mesh(V, F)
-        viewer.data().set_uv(UV, FUV)
-        viewer.data().show_texture = True
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).set_uv(UV, FUV)
+        viewer.data(0).show_texture = True
 
     if key == ord('8'):
         # Global parametrization in 3D with seams
-        viewer.data().set_mesh(V, F)
-        viewer.data().set_uv(UV_seams, FUV_seams)
-        viewer.data().show_texture = True
+        viewer.data(0).set_mesh(V, F)
+        viewer.data(0).set_uv(UV_seams, FUV_seams)
+        viewer.data(0).show_texture = True
 
-    viewer.data().set_colors(igl.eigen.MatrixXd([[1, 1, 1]]))
+    viewer.data(0).set_colors(igl.eigen.MatrixXd([[1, 1, 1]]))
 
-    viewer.data().set_texture(texture_R, texture_B, texture_G)
+    viewer.data(0).set_texture(texture_R, texture_B, texture_G)
 
-    viewer.core.align_camera_center(viewer.data().V, viewer.data().F)
+    viewer.core.align_camera_center(viewer.data(0).V, viewer.data(0).F)
 
     return False
 

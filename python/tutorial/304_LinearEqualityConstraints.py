@@ -85,9 +85,9 @@ igl.jet(Z_const, min_z, max_z, C_const)
 
 # Plot the mesh with pseudocolors
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
-viewer.data().show_lines = False
-viewer.data().set_colors(C)
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).show_lines = False
+viewer.data(0).set_colors(C)
 
 
 def key_down(viewer, key, mode):
@@ -95,9 +95,9 @@ def key_down(viewer, key, mode):
         global toggle, C, C_const
 
         if toggle:
-            viewer.data().set_colors(C)
+            viewer.data(0).set_colors(C)
         else:
-            viewer.data().set_colors(C_const)
+            viewer.data(0).set_colors(C_const)
 
         toggle = not toggle
         return True

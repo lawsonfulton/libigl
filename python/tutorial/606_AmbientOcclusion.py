@@ -35,13 +35,13 @@ def key_down(viewer, key, modifier):
 
     if key == ord('1'):
         # Show the mesh without the ambient occlusion factor
-        viewer.data().set_colors(color)
+        viewer.data(0).set_colors(color)
     elif key == ord('2'):
         # Show the mesh with the ambient occlusion factor
         C = color.replicate(V.rows(), 1)
         for i in range(C.rows()):
             C.setRow(i, C.row(i) * AO[i, 0])
-        viewer.data().set_colors(C)
+        viewer.data(0).set_colors(C)
     elif key == ord('.'):
         viewer.core.lighting_factor += 0.1
     elif key == ord(','):
@@ -66,9 +66,9 @@ igl.embree.ambient_occlusion(V, F, V, N, 500, AO)
 AO = 1.0 - AO
 
 # Plot the generated mesh
-viewer.data().set_mesh(V, F)
+viewer.data(0).set_mesh(V, F)
 key_down(viewer, ord('2'), 0)
 viewer.callback_key_down = key_down
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 viewer.core.lighting_factor = 0.0
 viewer.launch()

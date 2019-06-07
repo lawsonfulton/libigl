@@ -32,5 +32,5 @@ igl.triangle.triangulate(V, E, H, "a0.005q", V2, F2)
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V2, F2)
+viewer.data(0).set_mesh(V2, F2)
 viewer.launch()

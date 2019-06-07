@@ -62,24 +62,24 @@ E_box = igl.eigen.MatrixXd(
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
-viewer.data().set_mesh(V, F)
+viewer.data(0).set_mesh(V, F)
 
 # Plot the corners of the bounding box as points
-viewer.data().add_points(V_box, igl.eigen.MatrixXd([[1, 0, 0]]))
+viewer.data(0).add_points(V_box, igl.eigen.MatrixXd([[1, 0, 0]]))
 
 # Plot the edges of the bounding box
 for i in range(0, E_box.rows()):
-    viewer.data().add_edges(
+    viewer.data(0).add_edges(
         V_box.row(E_box[i, 0]),
         V_box.row(E_box[i, 1]),
         igl.eigen.MatrixXd([[1, 0, 0]]))
 
 # Plot labels with the coordinates of bounding box vertices
 l1 = 'x: ' + str(m[0, 0]) + ' y: ' + str(m[0, 1]) + ' z: ' + str(m[0, 2])
-viewer.data().add_label(m.transpose(), l1)
+viewer.data(0).add_label(m.transpose(), l1)
 
 l2 = 'x: ' + str(M[0, 0]) + ' y: ' + str(M[0, 1]) + ' z: ' + str(M[0, 2])
-viewer.data().add_label(M.transpose(), l2)
+viewer.data(0).add_label(M.transpose(), l2)
 
 # Launch the viewer
 viewer.launch()

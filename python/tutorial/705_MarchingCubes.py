@@ -21,14 +21,14 @@ check_dependencies(dependencies)
 
 def key_down(viewer, key, modifier):
     if key == ord('1'):
-        viewer.data().clear()
-        viewer.data().set_mesh(V, F)
+        viewer.data(0).clear()
+        viewer.data(0).set_mesh(V, F)
     elif key == ord('2'):
-        viewer.data().clear()
-        viewer.data().set_mesh(SV, SF)
+        viewer.data(0).clear()
+        viewer.data(0).set_mesh(SV, SF)
     elif key == ord('3'):
-        viewer.data().clear()
-        viewer.data().set_mesh(BV, BF)
+        viewer.data(0).clear()
+        viewer.data(0).set_mesh(BV, BF)
 
     return True
 
@@ -98,6 +98,6 @@ if __name__ == "__main__":
 
     # Plot the generated mesh
     viewer = igl.glfw.Viewer()
-    viewer.data().set_mesh(SV, SF)
+    viewer.data(0).set_mesh(SV, SF)
     viewer.callback_key_down = key_down
     viewer.launch()

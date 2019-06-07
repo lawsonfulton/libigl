@@ -94,9 +94,9 @@ def update_visualization(viewer):
     if overlay:
         append_mesh(C_vis, F_vis, V_vis, V, F, igl.eigen.MatrixXd([[0.8, 0.8, 0.8]]))
 
-    viewer.data().clear()
-    viewer.data().set_mesh(V_vis, F_vis)
-    viewer.data().set_colors(C_vis)
+    viewer.data(0).clear()
+    viewer.data(0).set_mesh(V_vis, F_vis)
+    viewer.data(0).set_colors(C_vis)
     viewer.core.lighting_factor = overlay
 
 
@@ -140,5 +140,5 @@ igl.per_edge_normals(V, F, igl.PER_EDGE_NORMALS_WEIGHTING_TYPE_UNIFORM, FN, EN, 
 # Plot the generated mesh
 update_visualization(viewer)
 viewer.callback_key_down = key_down
-viewer.data().show_lines = False
+viewer.data(0).show_lines = False
 viewer.launch()

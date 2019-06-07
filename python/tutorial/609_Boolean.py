@@ -36,9 +36,9 @@ def update(viewer):
         else:
             C.setRow(f, Green)
 
-    viewer.data().clear()
-    viewer.data().set_mesh(VC, FC)
-    viewer.data().set_colors(C)
+    viewer.data(0).clear()
+    viewer.data(0).set_mesh(VC, FC)
+    viewer.data(0).set_colors(C)
     print("Done.")
 
 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     print(
         "Usage: Press '.' to switch to next boolean operation type. \nPress ',' to switch to previous boolean operation type. \nPress ']' to push near cutting plane away from camera. \nPress '[' to pull near cutting plane closer to camera. \nHint: investigate _inside_ the model to see orientation changes. \n")
 
-    viewer.data().show_lines = True
+    viewer.data(0).show_lines = True
     viewer.callback_key_down = key_down
     viewer.core.camera_dnear = 3.9
     viewer.launch()

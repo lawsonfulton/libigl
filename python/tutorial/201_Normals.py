@@ -30,13 +30,13 @@ N_corners = igl.eigen.MatrixXd()
 # This function is called every time a keyboard button is pressed
 def key_pressed(viewer, key, modifier):
     if key == ord('1'):
-        viewer.data().set_normals(N_faces)
+        viewer.data(0).set_normals(N_faces)
         return True
     elif key == ord('2'):
-        viewer.data().set_normals(N_vertices)
+        viewer.data(0).set_normals(N_vertices)
         return True
     elif key == ord('3'):
-        viewer.data().set_normals(N_corners)
+        viewer.data(0).set_normals(N_corners)
         return True
     return False
 
@@ -59,9 +59,9 @@ igl.per_corner_normals(V, F, 20, N_corners)
 # Plot the mesh
 viewer = igl.glfw.Viewer()
 viewer.callback_key_pressed = key_pressed
-viewer.data().show_lines = False
-viewer.data().set_mesh(V, F)
-viewer.data().set_normals(N_faces)
+viewer.data(0).show_lines = False
+viewer.data(0).set_mesh(V, F)
+viewer.data(0).set_normals(N_faces)
 print("Press '1' for per-face normals.")
 print("Press '2' for per-vertex normals.")
 print("Press '3' for per-corner normals.")
