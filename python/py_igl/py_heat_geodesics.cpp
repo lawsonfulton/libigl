@@ -9,7 +9,8 @@
 // Wrap the data class, no properties are exposed since it is not necessary
 py::class_<igl::HeatGeodesicsData<double> > heat_geodesics_data(m, "heat_geodesics_data");
 
-heat_geodesics_data.def(py::init<>());
+heat_geodesics_data.def(py::init<>())
+.def_readwrite("Grad", &igl::HeatGeodesicsData<double>::Grad);
 
 m.def("heat_geodesics_precompute", []
 (
