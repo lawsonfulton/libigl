@@ -23,6 +23,18 @@ m.def("heat_geodesics_precompute", []
 }, __doc_igl_heat_geodesics_precompute,
 py::arg("V"), py::arg("F"), py::arg("data"));
 
+m.def("heat_geodesics_precompute", []
+(
+    const Eigen::MatrixXd &V,
+    const Eigen::MatrixXi &F,
+    double t,
+    igl::HeatGeodesicsData<double> &data
+)
+{
+  return igl::heat_geodesics_precompute(V, F, t, data);
+}, __doc_igl_heat_geodesics_precompute,
+py::arg("V"), py::arg("F"), py::arg("t"), py::arg("data"));
+
 
 m.def("heat_geodesics_solve", []
 (
